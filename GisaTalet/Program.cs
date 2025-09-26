@@ -6,21 +6,21 @@ namespace GisaTalet
     {
         static void Main(string[] args)
         {
-                Random random = new Random();
-                bool spelaIgen = true;
+            Random random = new Random();
+            bool spelaIgen = true;
 
-               while (spelaIgen)
-                {
-                int hemligTal= random.Next(1, 101);
+            while (spelaIgen)
+            {
+                int hemligTal = random.Next(1, 101);
                 int antalGissningar = 0;
                 int gissning = 0;
 
                 Console.WriteLine("Välkommen till Gissa Talet!");
                 Console.WriteLine("Jag har valt ett tal mellan 1 och 100. Kan du gissa vilket?");
-               
-               
-            // Här börjar själva gissningsloopen
-            while (gissning != hemligTal)
+
+
+                // Här börjar själva gissningsloopen
+                while (gissning != hemligTal)
                 {
                     Console.Write("Ange din gissning: ");
                     bool correctInput = int.TryParse(Console.ReadLine(), out gissning);
@@ -55,9 +55,27 @@ namespace GisaTalet
                             Console.WriteLine("Ledtråd: Talet är udda.");
                         }
                     }
+                    // fråga om spelaren vill spela igen
+                    if (gissning == hemligTal)
+                    {
+                        Console.Write("Vill du spela igen? (ja/nej): ");
+                        string svar = Console.ReadLine().ToLower();
+                        if (svar == "ja")
+                        {
+                            spelaIgen = true;
+                        }
+                        else
+                        {
+                            spelaIgen = false;
+                            Console.WriteLine("Tack för att du spelade! Hej då!");
+                        }
 
 
 
+                    }
                 }
             }
+        }
+    }
+
 }
